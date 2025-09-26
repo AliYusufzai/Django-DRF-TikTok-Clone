@@ -42,3 +42,16 @@ class UserLoginSerializer(serializers.Serializer):
                 "username": user.username,
             }
         }
+        
+class UserUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ["username", "phone", "first_name", "last_name", "email"]
+        extra_kwargs = {
+            "username": {"required": False},
+            "phone": {"required": False},
+            "first_name": {"required": False},
+            "last_name": {"required": False},
+            "email": {"required": False},
+            "avatar": {"required": False},
+        }
