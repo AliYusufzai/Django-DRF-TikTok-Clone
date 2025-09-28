@@ -19,12 +19,9 @@ class CustomUserManager(BaseUserManager):
 
 
 class CustomUser(AbstractUser):
-    # Make email required + unique
     email = models.EmailField(unique=True)
-
-    # Keep username (from AbstractUser)
-    # Add extra fields
     phone = models.CharField(max_length=15, blank=True, null=True)
+    is_active = models.BooleanField(default=False)
 
     # Override manager
     objects = CustomUserManager()
